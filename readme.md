@@ -31,6 +31,10 @@ Welcome to the Picture Match Memory Card Game project!
 
 • Card Matching: Match pairs of cards with the same image.
 
+• Matched Card Counter: Each time you match a pair it will automatically counts.
+
+• Mismatched Counter: Each time you mismatch a card it will automatically counts.
+
 • Reset: You can reset the game at any time using the "Reset" button.
 
 # Game Rules
