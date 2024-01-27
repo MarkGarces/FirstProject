@@ -11,7 +11,7 @@ let mismatchedCard = 0;
 let timerStarted = false;
 let timerInterval;
 let elapsedTime = 0;
-const timerDuration = 30;
+const timerDuration = 35;
 
 function startTimer() {
     timerStarted = true;
@@ -21,7 +21,7 @@ function startTimer() {
 
         if (elapsedTime >= timerDuration) {
             stopTimer();
-            alert("Time's up! Game over!")
+            displayLoserMessage("Time's up! Game over.");
             disableDeck = true;
         } 
     }, 1000)
@@ -62,6 +62,17 @@ function showWinnerMessage() {
 function hideWinnerMessage() {
     const winnerMessage = document.getElementById("winnerMessage");
     winnerMessage.style.display = "none";
+}
+function displayLoserMessage(msg) {
+    const loserMessageElement = document.getElementById("loserMessage");
+    loserMessageElement.style.display = "block";
+    setTimeout(() => {
+        hideLoserMessage();
+    }, 5000);
+}
+function hideLoserMessage() {
+    const loserMessage = document.getElementById("loserMessage")
+    loserMessage.style.display = "none"
 }
 
 function flipCard(e) {
