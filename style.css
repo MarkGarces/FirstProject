@@ -110,7 +110,7 @@ body {
     
 }
 .card .back-view img{
-    max-width: 100%;
+    max-width: 80px;
     border-radius: 50px; 
 }
 .card.flip .front-view{
