@@ -51,7 +51,18 @@ function resetGame() {
     shuffleCard();
 }
 
-
+function showWinnerMessage() {
+    const winnerMessage = document.getElementById("winnerMessage");
+    winnerMessage.style.display = "block";
+    disableDeck = false;
+    setTimeout(() => {
+        hideWinnerMessage();
+    }, 3000);
+} 
+function hideWinnerMessage() {
+    const winnerMessage = document.getElementById("winnerMessage");
+    winnerMessage.style.display = "none";
+}
 
 function flipCard(e) {
     if (!timerStarted) {
@@ -77,7 +88,7 @@ function matchCards(img1, img2) {
         if (matchedCard === 8) {
             setTimeout(() => {
                 stopTimer(30);
-                alert("Congratulations! You've won the game!")
+                showWinnerMessage();
                 resetGame();
                 return shuffleCard();
             }, 1000)
@@ -121,9 +132,16 @@ function shuffleCard() {
         card.addEventListener("click", flipCard)
     })
 }
+
+
+
 shuffleCard();
 
 cards.forEach(card => {
     
     card.addEventListener("click", flipCard);
+});
+
+document.getElementById("winnerMessage").addEventListener("click", () => {
+    hideWinnerMessage();
 });
