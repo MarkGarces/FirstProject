@@ -6,9 +6,7 @@ Welcome to the Picture Match Memory Card Game project!
 
 • Load this link in your browser https://markgarces.github.io/FirstProject/
 
-![Alt text](image.png)
-
-![Alt text](image-3.png)
+![Alt text](images/actualgame.png)
 
 # Technologies Used
 
