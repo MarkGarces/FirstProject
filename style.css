@@ -119,3 +119,23 @@ body {
 .card.flip .back-view{
     transform: rotateY(0);
 }
+
+.counter {
+    display: inline-flex;
+    align-items: center;
+    margin-top: -600px;
+    
+    
+}
+
+#matched-cards{
+    background: rgb(235, 212, 120);
+    border-radius: 10px;
+    padding-right: 50px;
+    margin-right: 50px;
+}
+#mismatched-cards {
+    background: rgb(235, 212, 120);
+    border-radius: 10px;
+    padding-left: 15px;
+}

@@ -1,11 +1,13 @@
 const cards = document.querySelectorAll(".card");
 const timerElement = document.getElementById("timer")
-const startButton = document.querySelector("strbtn")
 const resetButton = document.querySelector("reset-btn")
+const matchedCardsElement = document.getElementById("matched-cards")
+const mismatchedCardsElement = document.getElementById("mismatched-cards")
 
 let cardOne, cardTwo;
 let disableDeck = false;
 let matchedCard = 0;
+let mismatchedCard = 0;
 let timerStarted = false;
 let timerInterval;
 let elapsedTime = 0;
@@ -28,6 +30,13 @@ function startTimer() {
 function stopTimer() {
     clearInterval(timerInterval);
     timerStarted = false;
+}
+
+function updateMatchedCardsCount() {
+    matchedCardsElement.textContent = `Matched: ${matchedCard}`
+}
+function updateMismatchedCardsCount() {
+    mismatchedCardsElement.textContent = `Mismatched: ${mismatchedCard}`
 }
 
 if (!timerStarted) {
@@ -64,6 +73,7 @@ function flipCard(e) {
 function matchCards(img1, img2) {
     if (img1 === img2) {
         matchedCard++;
+        updateMatchedCardsCount();
         if (matchedCard === 8) {
             setTimeout(() => {
                 stopTimer(30);
@@ -76,22 +86,30 @@ function matchCards(img1, img2) {
         cardTwo.removeEventListener("click", flipCard);
         cardOne = cardTwo = "";
         return disableDeck = false;
-    }
-    setTimeout(() => {
-        cardOne.classList.add("shake");
-        cardTwo.classList.add("shake")
-    }, 400);
-    
-    setTimeout(() => {
-        cardOne.classList.remove("shake", "flip");
-        cardTwo.classList.remove("shake", "flip");
-        cardOne = cardTwo = "";
-        disableDeck = false
-    }, 1200);
+    } else {
+        mismatchedCard++;
+        updateMismatchedCardsCount();
 
+        setTimeout(() => {
+            cardOne.classList.add("shake");
+            cardTwo.classList.add("shake")
+        }, 400);
+        
+        setTimeout(() => {
+            cardOne.classList.remove("shake", "flip");
+            cardTwo.classList.remove("shake", "flip");
+            cardOne = cardTwo = "";
+            disableDeck = false
+        }, 1200);
+    
+    }
 }
+    
 function shuffleCard() {
     matchedCard = 0;
+    mismatchedCard = 0;
+    updateMatchedCardsCount();
+    updateMismatchedCardsCount();
     cardOne = cardTwo = "";
     disableDeck = false;
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
