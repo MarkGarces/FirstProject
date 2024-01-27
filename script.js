@@ -9,7 +9,7 @@ let matchedCard = 0;
 let timerStarted = false;
 let timerInterval;
 let elapsedTime = 0;
-const timerDuration = 5;
+const timerDuration = 30;
 
 function startTimer() {
     timerStarted = true;
